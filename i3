@@ -23,7 +23,7 @@ bindsym $mod+Shift+x   gaps inner current minus 5
 
 ### Variables
 set $term urxvt
-set $menu rofi -show run | xargs swaymsg exec
+set $menu rofi -show run
 
 ### Key bindings
 #
@@ -49,7 +49,7 @@ set $menu rofi -show run | xargs swaymsg exec
     bindsym $mod+Shift+r reload
 
     # exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+e exec i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'
 #
 # Moving around:
 #
