@@ -46,7 +46,10 @@ set $menu rofi -show run
     floating_modifier $mod
 
     # reload the configuration file
-    bindsym $mod+Shift+r reload
+    bindsym $mod+Shift+c reload
+
+    # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+    bindsym $mod+Shift+r restart
 
     # exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'
