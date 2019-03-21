@@ -1,176 +1,126 @@
-################################################################################
-
-set $mod Mod4
+# i3 config file (v4)
+#
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # toggle split direction for each window
 for_window [class="^"] split toggle
 default_orientation vertical
 
-exec steam-native -silent
-exec feh --bg-scale /home/user/background/material-bg.png
-exec xcompmgr -cCfn -I0.06 -O0.07
+set $mod Mod4
 
-################################################################################
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
 
-# Set inner/outer gaps
-gaps inner 5
-gaps outer 0
+# start a terminal
+bindsym $mod+Return exec urxvt
 
-bindsym $mod+z		gaps outer current plus 5
-bindsym $mod+x          gaps inner current plus 5
-bindsym $mod+Shift+z	gaps outer current minus 5
-bindsym $mod+Shift+x   gaps inner current minus 5
+# kill focused window
+bindsym $mod+Shift+q kill; split toggle
 
-### Variables
-set $term urxvt
-set $menu rofi -show run
+# start rofi
+bindsym $mod+d exec rofi -show run
 
-### Key bindings
-#
-# Basics:
-#
-    # start a terminal
-    bindsym $mod+Return exec $term
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
-    # kill focused window
-    bindsym $mod+Shift+q kill; split toggle
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
-    # start your launcher
-    bindsym $mod+d exec $menu
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
 
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    floating_modifier $mod
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
 
-    # reload the configuration file
-    bindsym $mod+Shift+c reload
+# toggle tiling / floating
+bindsym $mod+space floating toggle
 
-    # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-    bindsym $mod+Shift+r restart
+### Workspaces
 
-    # exit i3 (logs you out of your X session)
-    bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-#
-# Moving around:
-#
-    # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
-    # or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
+  # Define names for default workspaces for which we configure key bindings later on.
+  # We use variables to avoid repeating the names in multiple places.
+  set $ws1 "1"
+  set $ws2 "2"
+  set $ws3 "3"
+  set $ws4 "4"
+  set $ws5 "5"
+  set $ws6 "6"
+  set $ws7 "7"
+  set $ws8 "8"
+  set $ws9 "9"
+  set $ws10 "10"
 
-    # _move_ the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
-    # ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
-#
-# Workspaces:
-#
-    # switch to workspace
-    bindsym $mod+1 workspace 1
-    bindsym $mod+2 workspace 2
-    bindsym $mod+3 workspace 3
-    bindsym $mod+4 workspace 4
-    bindsym $mod+5 workspace 5
-    bindsym $mod+6 workspace 6
-    bindsym $mod+7 workspace 7
-    bindsym $mod+8 workspace 8
-    bindsym $mod+9 workspace 9
-    bindsym $mod+0 workspace 10
-    # move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace 1
-    bindsym $mod+Shift+2 move container to workspace 2
-    bindsym $mod+Shift+3 move container to workspace 3
-    bindsym $mod+Shift+4 move container to workspace 4
-    bindsym $mod+Shift+5 move container to workspace 5
-    bindsym $mod+Shift+6 move container to workspace 6
-    bindsym $mod+Shift+7 move container to workspace 7
-    bindsym $mod+Shift+8 move container to workspace 8
-    bindsym $mod+Shift+9 move container to workspace 9
-    bindsym $mod+Shift+0 move container to workspace 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
-#
-# Layout stuff:
-#
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+  # switch to workspace
+  bindsym $mod+1 workspace $ws1
+  bindsym $mod+2 workspace $ws2
+  bindsym $mod+3 workspace $ws3
+  bindsym $mod+4 workspace $ws4
+  bindsym $mod+5 workspace $ws5
+  bindsym $mod+6 workspace $ws6
+  bindsym $mod+7 workspace $ws7
+  bindsym $mod+8 workspace $ws8
+  bindsym $mod+9 workspace $ws9
+  bindsym $mod+0 workspace $ws10
 
-    # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+  # move focused container to workspace
+  bindsym $mod+Shift+1 move container to workspace $ws1
+  bindsym $mod+Shift+2 move container to workspace $ws2
+  bindsym $mod+Shift+3 move container to workspace $ws3
+  bindsym $mod+Shift+4 move container to workspace $ws4
+  bindsym $mod+Shift+5 move container to workspace $ws5
+  bindsym $mod+Shift+6 move container to workspace $ws6
+  bindsym $mod+Shift+7 move container to workspace $ws7
+  bindsym $mod+Shift+8 move container to workspace $ws8
+  bindsym $mod+Shift+9 move container to workspace $ws9
+  bindsym $mod+Shift+0 move container to workspace $ws10
 
-    # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-    # Toggle the current focus between tiling and floating mode
-    bindsym $mod+space floating toggle
-
-    # Swap focus between the tiling area and the floating area
-    bindsym $mod+Shift+space focus mode_toggle
-
-    # move focus to the parent container
-    bindsym $mod+a focus parent
-
-#
-# Resizing containers:
-#
+# resize window (you can also use the mouse for that)
 mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+        # These bindings trigger as soon as you enter the resize mode
 
-    # ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
 
-    # return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
 }
+
 bindsym $mod+r mode "resize"
 
-#
-# Status Bar:
-#
-exec polybar -r bar
-
-################################################################################
-### Gaps Config:
+### Startup options
 
 # Disable window titlebars entirely
 for_window [class="^.*"] border pixel 2
-
-# Smart gaps (gaps used if only more than one container on the workspace)
-smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 smart_borders on
 
-################################################################################
+exec --no-startup-id polybar -r bar
+exec --no-startup-id feh --bg-scale /home/user/Images/background.png
+#exec --no-startup-id xcompmgr -cCfn -I0.06 -O0.07
+exec --no-startup-id compton --config /home/user/.config/compton.conf
+exec --no-startup-id steam-native -silent
