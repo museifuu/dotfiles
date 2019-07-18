@@ -1,0 +1,69 @@
+{
+    "layer": "bottom", // Waybar at top layer
+    "height": 17, // Waybar height (to be removed for auto height)
+
+    "modules-left": ["sway/workspaces", "custom/separator", "sway/mode", "sway/window"],
+    "modules-center": ["network"],
+    "modules-right":
+    [
+        "cpu",
+        "custom/separator",
+        "custom/cpu_freq",
+        "custom/separator",
+        "custom/gpu_freq",
+        "custom/separator",
+        "temperature",
+        "custom/separator",
+        "custom/fanspeed",
+        "custom/separator",
+        "memory",
+        "custom/separator",
+        "clock",
+        "tray"
+    ],
+    // Modules configuration
+    "sway/mode": {
+        "format": "<span style=\"italic\" color=\"#00ff00\">[{}] </span>"
+    },
+    "network": {
+        "format-wifi": "<span color=\"#3EC13F\" font=\"Dejavu Sans Mono 10\">▾</span> {bandwidthDownOctets:6} <span color=\"#808080\">|</span> <span color=\"#FE522C\" font=\"Dejavu Sans Mono 10\">▴</span> {bandwidthUpOctets:8}  ",
+        "format-disconnected": "<span color=\"#ff0000\">Disconnected </span>",
+        "interval": 1
+    },
+    "cpu": {
+        "format": "<span color=\"#ff00ff\">CPU:</span> {usage:2}% {load:3} load",
+        "tooltip": false,
+        "interval": 1
+    },
+    "custom/cpu_freq": {
+        "exec": "id=$(pidof waybar); while [ $id -eq $(pidof waybar) ]; do lscpu | grep MHz: | cut -c 34-41; sleep 0.5; done",
+        "format": "{} MHz"
+    },
+    "custom/gpu_freq": {
+        "exec": "id=$(pidof waybar); while [ $id -eq $(pidof waybar) ]; do cat /sys/class/drm/card0/gt_cur_freq_mhz; sleep 0.5; done",
+        "format": "GPU: {} MHz"
+    },
+    "temperature": {
+        "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input",
+        "format": "{temperatureC}°C",
+        "interval": 1
+    },
+    "custom/fanspeed": {
+        "exec": "id=$(pidof waybar); while [ $id -eq $(pidof waybar) ]; do cat /sys/devices/platform/coretemp.0/hwmon/hwmon1/subsystem/hwmon2/fan1_input; sleep 0.5; done",
+        "format": "{} RPM"
+    },
+    "memory": {
+        "format": "RAM: {used:5.2f} GB / {total:.2f} GB",
+        "interval": 1
+    },
+    "clock": {
+        "format": "{:%Y-%m-%d %H:%M:%S}",
+        "interval": 1
+    },
+    "tray": {
+        "spacing": 0
+    },
+    "custom/separator": {
+        "format": "<span color=\"#808080\"> | </span>"
+    }
+}

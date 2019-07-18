@@ -10,6 +10,7 @@ set $mod Mod4
 set $bar_height 14
 
 output * bg /home/user/Images/arch-10.png fill
+#output * bg /home/user/Images/wallpaper.png fill
 
 floating_modifier $mod
 
@@ -24,7 +25,7 @@ bindsym $mod+Right focus right
 
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move position 0 px -$bar_height px
+bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 bindsym $mod+f fullscreen toggle
@@ -64,7 +65,7 @@ bindsym $mod+space floating toggle
   bindsym $mod+8 workspace $ws8
   bindsym $mod+9 workspace $ws9
   bindsym $mod+0 workspace $ws10
-  bindsym $mod+s scratchpad show
+  bindsym $mod+a scratchpad show
 
 
   # move focused container to workspace
@@ -78,7 +79,7 @@ bindsym $mod+space floating toggle
   bindsym $mod+Shift+8 move container to workspace $ws8
   bindsym $mod+Shift+9 move container to workspace $ws9
   bindsym $mod+Shift+0 move container to workspace $ws10
-  bindsym $mod+Shift+s move scratchpad
+  bindsym $mod+Shift+a move scratchpad
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
@@ -92,7 +93,7 @@ bindsym $mod+Shift+p exec grim /home/user/screenshots/$(date +'%Y-%m-%d-%T-scree
 
 # Disable window titlebars entirely
 for_window [class="^.*"] border pixel 1
-for_window [class="Alacritty"] split toggle
+for_window [class="^."] split toggle
 
 smart_borders on
 smart_gaps on
