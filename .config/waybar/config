@@ -10,11 +10,13 @@
         "custom/separator",
         "custom/cpu_freq",
         "custom/separator",
-        "custom/gpu_freq",
-        "custom/separator",
         "temperature",
         "custom/separator",
-        "custom/fanspeed",
+        "custom/cpu_fanspeed",
+        "custom/separator",
+        "custom/gpu_freq",
+        "custom/separator",
+        "custom/gpu_fanspeed",
         "custom/separator",
         "memory",
         "custom/separator",
@@ -26,7 +28,7 @@
         "format": "<span style=\"italic\" color=\"#00ff00\">[{}] </span>"
     },
     "network": {
-        "format-wifi": "<span color=\"#3EC13F\" font=\"Dejavu Sans Mono 10\">▾</span> {bandwidthDownOctets:6} <span color=\"#808080\">|</span> <span color=\"#FE522C\" font=\"Dejavu Sans Mono 10\">▴</span> {bandwidthUpOctets:8}  ",
+        "format-wifi": "<span color=\"#3EC13F\" font=\"Dejavu Sans Mono 10\">▾</span> {bandwidthDownOctets:9} <span color=\"#808080\" font=\"Dejavu Sans Mono 8\">|</span> <span color=\"#FE522C\" font=\"Dejavu Sans Mono 10\">▴</span> {bandwidthUpOctets:8}  ",
         "format-disconnected": "<span color=\"#ff0000\">Disconnected </span>",
         "interval": 1
     },
@@ -36,19 +38,23 @@
         "interval": 1
     },
     "custom/cpu_freq": {
-        "exec": "id=$(pidof waybar); while [ $id -eq $(pidof waybar) ]; do lscpu | grep MHz: | cut -c 34-41; sleep 0.5; done",
-        "format": "{} MHz"
-    },
-    "custom/gpu_freq": {
-        "exec": "id=$(pidof waybar); while [ $id -eq $(pidof waybar) ]; do cat /sys/class/drm/card0/gt_cur_freq_mhz; sleep 0.5; done",
-        "format": "GPU: {} MHz"
+        "exec": "id=$(pidof waybar); while [ $id -eq $(pidof waybar) ]; do cpu_freq; sleep 0.5; done",
+        "format": "{}"
     },
     "temperature": {
         "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input",
         "format": "{temperatureC}°C",
         "interval": 1
     },
-    "custom/fanspeed": {
+    "custom/cpu_fanspeed": {
+        "exec": "id=$(pidof waybar); while [ $id -eq $(pidof waybar) ]; do cat /sys/devices/platform/coretemp.0/hwmon/hwmon1/subsystem/hwmon3/fan1_input; sleep 0.5; done",
+        "format": "{} RPM"
+    },
+    "custom/gpu_freq": {
+        "exec": "id=$(pidof waybar); while [ $id -eq $(pidof waybar) ]; do echo $(expr $(cat /sys/devices/platform/coretemp.0/hwmon/hwmon1/subsystem/hwmon2/freq1_input) / 1000000) MHz; sleep 0.5; done",
+        "format": "GPU: {:8}"
+    },
+    "custom/gpu_fanspeed": {
         "exec": "id=$(pidof waybar); while [ $id -eq $(pidof waybar) ]; do cat /sys/devices/platform/coretemp.0/hwmon/hwmon1/subsystem/hwmon2/fan1_input; sleep 0.5; done",
         "format": "{} RPM"
     },
@@ -64,6 +70,6 @@
         "spacing": 0
     },
     "custom/separator": {
-        "format": "<span color=\"#808080\"> | </span>"
+        "format": "<span color=\"#808080\" font=\"Dejavu Sans Mono 8\"> | </span>"
     }
 }
