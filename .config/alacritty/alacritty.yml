@@ -167,8 +167,8 @@ colors:
   # Default colors
   primary:
     #background: '0x181020'
-    background: '0x282c34'
-    foreground: '0xe0e0e0'
+    background: '0x232627'
+    foreground: '0xfcfcfc'
 
     # Bright and dim foreground colors
     #
@@ -197,20 +197,22 @@ colors:
 
 #  # Normal colors
   normal:
-    black:   '0x000000'
-    red:     '0xd54e53'
-    green:   '0xb9ca4a'
-    yellow:  '0xe6c547'
-    blue:    '0x7aa6da'
-    magenta: '0xc397d8'
-    cyan:    '0x70c0ba'
-    white:   '0xeaeaea'
+    black:   '0x232627'
+    red:     '0xed1515'
+    green:   '0x11d116'
+    yellow:  '0xf67400'
+    blue:    '0x1d99f3'
+    magenta: '0x9b59b6'
+    cyan:    '0x1abc9c'
+    white:   '0xfcfcfc'
 #
 #  # Bright colors
+
+
   bright:
     black:   '0x666666'
     red:     '0xff3334'
-    #green:   '0x9ec400'
+    green:   '0x9ec400'
     green:   '0x5fd7af'
     yellow:  '0xe7c547'
     blue:    '0x7aa6da'
@@ -303,7 +305,7 @@ visual_bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.75
+background_opacity: 0.85
 
 # Mouse bindings
 #

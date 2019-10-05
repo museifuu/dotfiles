@@ -4,13 +4,13 @@
 
 # toggle split direction for each window
 for_window [class="^"] split toggle
-default_orientation vertical
+default_orientation horizontal
 
 set $mod Mod4
 
 
 
-exec --no-startup-id feh --bg-scale /home/user/Images/4c1be0b120dc47a60921b946f893082842262f0e_s1_n2.png
+exec --no-startup-id feh --bg-scale /home/kauan/Images/wallpaper_1.png
 
 floating_modifier $mod
 
@@ -55,7 +55,7 @@ bindsym $mod+space floating toggle
   set $ws10 "10"
 
   # switch to workspace
-  bindsym $mod+1 workspace $ws1
+  bindsym $mod+1  workspace $ws1
   bindsym $mod+2 workspace $ws2
   bindsym $mod+3 workspace $ws3
   bindsym $mod+4 workspace $ws4
@@ -87,7 +87,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+r mode "resize"
 
 ### Take screenshot
-bindsym $mod+Shift+p exec scrot /home/user/screenshots/%Y-%m-%d-%T-screenshot.png
+bindsym $mod+Shift+p exec scrot /home/kauan/screenshots/%Y-%m-%d-%T-screenshot.png
 
 # Disable window titlebars entirely
 for_window [class="^.*"] border pixel 1
@@ -100,10 +100,10 @@ gaps inner 0
 gaps outer 0
 
 exec --no-startup-id polybar -r bar &
-exec --no-startup-id compton --config /home/user/.config/compton.conf &
+exec --no-startup-id compton --config /home/kauan/.config/compton.conf &
 #exec --no-startup-id xcompmgr -cCfn -I0.06 -O0.07
 #exec dex --autostart &
-#exec steam-native -silent
+exec steam-native -silent
 #exec ngrok tcp localhost:22
 mode "resize"
 {
