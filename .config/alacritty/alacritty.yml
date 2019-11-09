@@ -50,14 +50,13 @@ window:
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
   decorations: full
-
-  # When true, alacritty starts maximized.
-  startup_mode: Maximized
+  # 'Windowed', 'Maximized' or 'Fullscreen'
+  startup_mode: Windowed
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
-  history: 10000
+  history: 2000
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
@@ -154,7 +153,7 @@ font:
   use_thin_strokes: true
 
 # Display the time it takes to redraw each frame.
-debug.render_timer: false
+debug.render_timer: true
 
 # Keep the log file after quitting Alacritty.
 debug.persistent_logging: false
@@ -305,7 +304,7 @@ visual_bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.85
+background_opacity: 0.75
 
 # Mouse bindings
 #

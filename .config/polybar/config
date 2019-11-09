@@ -17,7 +17,7 @@
 ;==========================================================
 
 [colors]
-    background = #d9232627
+    background = #c0232627
     ;background = #00000000
     background-alt = #234567
     ;foreground = ${xrdb:color7:#222}
@@ -57,10 +57,10 @@
 
     modules-left = i3 xwindow
     modules-center = networkspeeddown networkspeedup wlan eth
-    modules-right = cpu cpu_freq cpu_temperature cpu_fanspeed gpu_freq gpu_temperature gpu_fanspeed memory date
+    modules-right = cpu cpu_freq cpu_temperature cpu_fanspeed gpu_freq memory date
 
     separator = %{F#808080}|%{F}
-    
+
     tray-position = right
     tray-padding = 0
 
@@ -73,7 +73,7 @@
 
 [module/xwindow]
     type = internal/xwindow
-    label = %title:0:28:...%
+    label = %title:0:48:...%
 
 [module/filesystem]
     type = internal/fs
@@ -113,7 +113,7 @@
 
 [module/cpu]
     type = internal/cpu
-    interval = 0.3
+    interval = 0.2
     format-prefix = "CPU: "
     format-prefix-foreground = #f0f
     format-underline = #00dfdfdf
@@ -166,7 +166,7 @@
 
 [module/gpu_temperature]
     type = internal/temperature
-    hwmon-path = /sys/class/drm/card0/device/hwmon/hwmon2/temp1_input
+    hwmon-path = /sys/class/drm/card0/device/hwmon/hwmon1/temp1_input
     warn-temperature = 94
 
     format = <label>
@@ -210,22 +210,24 @@
 
     ; Only applies if <ramp-used> is used
     ramp-used-0 = ▁
-    ramp-used-1 = ▂
-    ramp-used-2 = ▃
-    ramp-used-3 = ▄
-    ramp-used-4 = ▅
-    ramp-used-5 = ▆
-    ramp-used-6 = ▇
-    ramp-used-7 = █
+    ramp-used-1 = ▁
+    ramp-used-2 = ▂
+    ramp-used-3 = ▃
+    ramp-used-4 = ▄
+    ramp-used-5 = ▅
+    ramp-used-6 = ▆
+    ramp-used-7 = ▇
+    ramp-used-8 = █
 
-    ramp-used-0-foreground = #ff28ff28
-    ramp-used-1-foreground = #ff46e028
-    ramp-used-2-foreground = #ff65c228
-    ramp-used-3-foreground = #ff84a328
-    ramp-used-4-foreground = #ffa38428
-    ramp-used-5-foreground = #ffc26528
-    ramp-used-6-foreground = #ffe04628
-    ramp-used-7-foreground = #ffff2828
+    ramp-used-0-foreground = #00000000
+    ramp-used-1-foreground = #ff28ff28
+    ramp-used-2-foreground = #ff46e028
+    ramp-used-3-foreground = #ff65c228
+    ramp-used-4-foreground = #ff84a328
+    ramp-used-5-foreground = #ffa38428
+    ramp-used-6-foreground = #ffc26528
+    ramp-used-7-foreground = #ffe04628
+    ramp-used-8-foreground = #ffff2828
 
 [module/networkspeeddown]
     type = internal/network
