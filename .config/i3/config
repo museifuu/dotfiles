@@ -3,16 +3,17 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # toggle split direction for each window
-for_window [class="alacritty"] split toggle
+#for_window [class="^Alacritty$"] split toggle
+for_window [class="^Alacritty$"] floating enable
 default_orientation vertical
 
 set $mod Mod4
 
-
-
-exec --no-startup-id feh --bg-scale /home/kauan/Images/wallpaper_1.png
+exec --no-startup-id feh --bg-fill /home/kauan/Images/1439241668548.png
 
 floating_modifier $mod
+
+bindcode 180 exec firefox
 
 bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill; split toggle
@@ -28,7 +29,7 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindsym $mod+f fullscreen toggle
+bindsym $mod+f fullscreen toggle; exec sleep 1 && xdotool key f
 
 bindsym $mod+q layout stacking
 bindsym $mod+w layout tabbed
@@ -99,11 +100,11 @@ smart_gaps on
 gaps inner 0
 gaps outer 0
 
-exec --no-startup-id polybar bar &
-exec --no-startup-id compton --config /home/kauan/.config/compton.conf &
+exec --no-startup-id polybar bar
+exec --no-startup-id picom --config /home/kauan/.config/picom.conf
 #exec --no-startup-id xcompmgr -cCfn -I0.06 -O0.07
 #exec dex --autostart &
-exec steam-native -silent
+exec --no-startup-id steam-native -silent
 #exec ngrok tcp localhost:22
 mode "resize"
 {
@@ -117,5 +118,3 @@ mode "resize"
     bindsym $mod+r mode "default"
 }
 
-floating_minimum_size 100 x 100
-floating_maximum_size 1366 x 751

@@ -57,7 +57,7 @@
 
     modules-left = i3 xwindow
     modules-center = networkspeeddown networkspeedup wlan eth
-    modules-right = cpu cpu_freq cpu_temperature cpu_fanspeed gpu_freq memory date
+    modules-right = cpu top_process cpu_freq cpu_temperature cpu_fanspeed memory date
 
     separator = %{F#808080}|%{F}
 
@@ -72,6 +72,7 @@
     cursor-scroll = ns-resize
 
 [module/xwindow]
+    offset-y = 17;
     type = internal/xwindow
     label = %title:0:48:...%
 
@@ -113,7 +114,7 @@
 
 [module/cpu]
     type = internal/cpu
-    interval = 0.2
+    interval = 0.3
     format-prefix = "CPU: "
     format-prefix-foreground = #f0f
     format-underline = #00dfdfdf
@@ -166,7 +167,7 @@
 
 [module/gpu_temperature]
     type = internal/temperature
-    hwmon-path = /sys/class/drm/card0/device/hwmon/hwmon1/temp1_input
+    hwmon-path = /sys/class/drm/card0/device/hwmon/hwmon2/temp1_input
     warn-temperature = 94
 
     format = <label>
@@ -228,6 +229,12 @@
     ramp-used-6-foreground = #ffc26528
     ramp-used-7-foreground = #ffe04628
     ramp-used-8-foreground = #ffff2828
+
+[module/top_process]
+    type = custom/script
+    interval = 0
+    exec = grep -A1 %CPU <<< $(top -b -1 -n2 -d1 -w20) | tail -n1
+    label = "%output%%"
 
 [module/networkspeeddown]
     type = internal/network

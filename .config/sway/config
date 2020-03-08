@@ -10,7 +10,6 @@ set $mod Mod4
 set $bar_height 14
 
 
-output * bg /home/user/Images/4c1be0b120dc47a60921b946f893082842262f0e_s1_n2.png fill
 
 floating_modifier $mod
 
