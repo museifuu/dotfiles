@@ -4,7 +4,7 @@
 
 # toggle split direction for each window
 #for_window [class="^Alacritty$"] split toggle
-for_window [class="^Alacritty$"] floating enable
+#for_window [class="^Alacritty$"] floating enable
 default_orientation vertical
 
 set $mod Mod4
@@ -29,7 +29,7 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindsym $mod+f fullscreen toggle; exec sleep 1 && xdotool key f
+bindsym $mod+f fullscreen toggle
 
 bindsym $mod+q layout stacking
 bindsym $mod+w layout tabbed

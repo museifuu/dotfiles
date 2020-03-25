@@ -17,7 +17,7 @@
 ;==========================================================
 
 [colors]
-    background = #c0232627
+    background = #cc0c0c0c
     ;background = #00000000
     background-alt = #234567
     ;foreground = ${xrdb:color7:#222}
@@ -56,7 +56,7 @@
     ;font-2 = xft:Verdana:pixelsize=10;2
 
     modules-left = i3 xwindow
-    modules-center = networkspeeddown networkspeedup wlan eth
+    modules-center = networkspeeddown networkspeedup signal_strength wlan eth
     modules-right = cpu top_process cpu_freq cpu_temperature cpu_fanspeed memory date
 
     separator = %{F#808080}|%{F}
@@ -74,7 +74,7 @@
 [module/xwindow]
     offset-y = 17;
     type = internal/xwindow
-    label = %title:0:48:...%
+    label = %title:0:42f:...%
 
 [module/filesystem]
     type = internal/fs
@@ -146,7 +146,7 @@
 
 [module/cpu_freq]
     type = custom/script
-    exec = "cpu_freq"
+    exec = "for i in {0..3}; do let "c = c + $(cat /sys/devices/system/cpu/cpufreq/policy$i/scaling_cur_freq)"; done; let "c = c / 4"; echo ${c:0:4}.${c:4:3} MHz"
     interval = 1
 
 [module/cpu_temperature]
@@ -249,6 +249,11 @@
     interval = 1
     label-connected = "%{F#FE522C}▴ %{F-}%upspeed:8%"
     format-connected = <label-connected>
+
+[module/signal_strength]
+    type = custom/script
+    interval = 1
+    exec = [ $(cat /sys/class/net/wlp4s0/operstate) = up ] && iwlist wlp4s0 scan | grep dBm | cut -c 49-55 || echo down
 
 [module/wlan]
     type = internal/network
