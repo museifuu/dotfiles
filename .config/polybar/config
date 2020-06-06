@@ -17,7 +17,7 @@
 ;==========================================================
 
 [colors]
-    background = #cc0c0c0c
+    background = #800c0c0c
     ;background = #00000000
     background-alt = #234567
     ;foreground = ${xrdb:color7:#222}
@@ -50,8 +50,9 @@
     module-margin-left = 1
     module-margin-right = 1
 
+    ;font-0 = Iosevka Term:style=Regular:pixelsize=9;3
     font-0 = Misc terminusmodx:style=Regular;0
-    ;font-0 = bitocra13full:style=Regular;0
+    ;;font-0 = bitocra13full:style=Regular;0
     font-1 = unifont:fontformat=truetype:size=14:antialias=true;1
     ;font-2 = xft:Verdana:pixelsize=10;2
 
@@ -60,6 +61,7 @@
     modules-right = cpu top_process cpu_freq cpu_temperature cpu_fanspeed memory date
 
     separator = %{F#808080}|%{F}
+
 
     tray-position = right
     tray-padding = 0
@@ -74,7 +76,7 @@
 [module/xwindow]
     offset-y = 17;
     type = internal/xwindow
-    label = %title:0:42f:...%
+    label = %title:0:35f:...%
 
 [module/filesystem]
     type = internal/fs

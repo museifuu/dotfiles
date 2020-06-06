@@ -62,18 +62,6 @@ scrolling:
   # scrollback is enabled (history > 0).
   multiplier: 3
 
-  # Scroll to the bottom when new text is written to the terminal.
-  auto_scroll: false
-
-# Spaces per Tab (changes require restart)
-#
-# This setting defines the width of a tab in cells.
-#
-# Some applications, like Emacs, rely on knowing about the width of a tab.
-# To prevent unexpected behavior in these applications, it's also required to
-# change the `it` value in terminfo when altering this setting.
-tabspaces: 4
-
 # Font configuration (changes require restart)
 font:
   # Normal (roman) font face
@@ -84,8 +72,8 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    #family: "Dejavu Sans Mono"
-    family: "Misc terminusmodx"
+    family: "Hack"
+    #family: "Misc terminusmodx"
     # The `style` can be specified to pick a specific face.
     style: Regular
 
@@ -112,7 +100,7 @@ font:
     #style: Italic
 
   # Point size
-  size: 9.0
+  size: 9 
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -141,7 +129,7 @@ font:
   #
   # This is a global setting and will require a log out or restart to take
   # effect.
-  use_thin_strokes: true
+  use_thin_strokes: false
 
 # Display the time it takes to redraw each frame.
 debug.render_timer: true
@@ -152,13 +140,54 @@ debug.persistent_logging: false
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Colors (Tomorrow Night Bright)
+# Colors (Nord)
 colors:
-  # Default colors
+   # Default colors
   primary:
-    #background: '0x181020'
-    background: '0x0c0c0c'
-    foreground: '0xfcfcfc'
+      background: '#0c0c0c'
+      foreground: '#fcfcfc'
+
+   # Normal colors
+  bright:
+    black:   '#666666'
+    red:     '#ff3334'
+    green:   '#5fd7af'
+    yellow:  '#e7c547'
+    blue:    '#7aa6da'
+    magenta: '#b77ee0'
+    cyan:    '#54ced6'
+    white:   '#ffffff'
+
+   # Bright colors
+  bright:
+     black:   '#4C566A'
+     red:     '#BF616A'
+     green:   '#A3BE8C'
+     yellow:  '#EBCB8B'
+     blue:    '#81A1C1'
+     magenta: '#B48EAD'
+     cyan:    '#8FBCBB'
+     white:   '#ECEFF4'
+   # Default colors
+   #primary:
+     #background: '#2E3440'
+     #foreground: '#D8DEE9'
+
+
+      #background: '0x181020'
+
+   # Normal colors
+
+
+
+   # Bright colors
+
+
+
+# Colors (Tomorrow Night Bright)
+#colors:
+  # Default colors
+
 
     # Bright and dim foreground colors
     #
@@ -185,74 +214,6 @@ colors:
   #  text: '0xeaeaea'
   #  background: '0x404040'
 
-#  # Normal colors
-#  normal:
-#    black:   '0x232627'
-#    red:     '0xed1515'
-#    green:   '0x11d116'
-#    yellow:  '0xf67400'
-#    blue:    '0x1d99f3'
-#    magenta: '0x9b59b6'
-#    cyan:    '0x1abc9c'
-#    white:   '0xfcfcfc'
-#
-# Bright colors
-
-  bright:
-    black:   '0x666666'
-    red:     '0xff3334'
-    green:   '0x5fd7af'
-    yellow:  '0xe7c547'
-    blue:    '0x7aa6da'
-    magenta: '0xb77ee0'
-    cyan:    '0x54ced6'
-    white:   '0xffffff'
-
-  # Normal colors
-  #normal:
-#    black:   '0x212121'
-#    red:     '0xc30771'
-#    green:   '0x10a778'
-#    yellow:  '0xa89c14'
-#    blue:    '0x008ec4'
-#    magenta: '0x523c79'
-#    cyan:    '0x20a5ba'
-#    white:   '0xe0e0e0'
-    #black:   '0x212121'
-    #red:     '0xe06c75'
-    #green:   '0x98c379'
-    #yellow:  '0xd19a66'
-    #blue:    '0x61afef'
-    #magenta: '0xc678dd'
-    #cyan:    '0x56b6c2'
-    #white:   '0xabb2bf'
-  # Bright colors
-  #bright:
-    #black:   '0x5c6370'
-    #red:     '0xfb007a'
-    #green:   '0x5fd7af'
-    #yellow:  '0xf3e430'
-    #blue:    '0x20bbfc'
-    #magenta: '0x6855de'
-    #cyan:    '0x4fb8cc'
-    #white:   '0xf1f1f1'
-
-
-
-  # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  #dim:
-  #  black:   '0x000000'
-  #  red:     '0x8c3336'
-  #  green:   '0x7a8530'
-  #  yellow:  '0x97822e'
-  #  blue:    '0x506d8f'
-  #  magenta: '0x80638e'
-  #  cyan:    '0x497e7a'
-  #  white:   '0x9a9a9a'
-
   # Indexed Colors
   #
   # The indexed colors include all colors from 16 to 256.
@@ -261,7 +222,7 @@ colors:
   # Example:
   #   `- { index: 16, color: '0xff00ff' }`
   #
-  indexed_colors: []
+#  indexed_colors: []
 
 # Visual Bell
 #
@@ -293,7 +254,9 @@ visual_bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.8
+
+#background_opacity: 0.7
+background_opacity:  0.698
 
 # Mouse bindings
 #
@@ -539,22 +502,18 @@ key_bindings:
   - { key: Left,     mods: Control, chars: "\x1b[1;5D"                       }
   - { key: Left,     mods: Alt,     chars: "\x1b[1;3D"                       }
   - { key: Left,                    chars: "\x1b[D",        mode: ~AppCursor }
-  - { key: Left,                    chars: "\x1bOD",        mode: AppCursor  }
   - { key: Right,    mods: Shift,   chars: "\x1b[1;2C"                       }
   - { key: Right,    mods: Control, chars: "\x1b[1;5C"                       }
   - { key: Right,    mods: Alt,     chars: "\x1b[1;3C"                       }
   - { key: Right,                   chars: "\x1b[C",        mode: ~AppCursor }
-  - { key: Right,                   chars: "\x1bOC",        mode: AppCursor  }
   - { key: Up,       mods: Shift,   chars: "\x1b[1;2A"                       }
   - { key: Up,       mods: Control, chars: "\x1b[1;5A"                       }
   - { key: Up,       mods: Alt,     chars: "\x1b[1;3A"                       }
   - { key: Up,                      chars: "\x1b[A",        mode: ~AppCursor }
-  - { key: Up,                      chars: "\x1bOA",        mode: AppCursor  }
   - { key: Down,     mods: Shift,   chars: "\x1b[1;2B"                       }
   - { key: Down,     mods: Control, chars: "\x1b[1;5B"                       }
   - { key: Down,     mods: Alt,     chars: "\x1b[1;3B"                       }
   - { key: Down,                    chars: "\x1b[B",        mode: ~AppCursor }
-  - { key: Down,                    chars: "\x1bOB",        mode: AppCursor  }
   - { key: F1,                      chars: "\x1bOP"                          }
   - { key: F2,                      chars: "\x1bOQ"                          }
   - { key: F3,                      chars: "\x1bOR"                          }

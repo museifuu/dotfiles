@@ -100,11 +100,13 @@ smart_gaps on
 gaps inner 0
 gaps outer 0
 
+exec --no-startup-id numlockx
 exec --no-startup-id polybar bar
 exec --no-startup-id picom --config /home/kauan/.config/picom.conf
 #exec --no-startup-id xcompmgr -cCfn -I0.06 -O0.07
 #exec dex --autostart &
 exec --no-startup-id steam-native -silent
+#exec --no-startup-id discord
 #exec ngrok tcp localhost:22
 mode "resize"
 {
