@@ -140,25 +140,24 @@ debug.persistent_logging: false
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Colors (Nord)
 colors:
-   # Default colors
   primary:
       background: '#0c0c0c'
       foreground: '#fcfcfc'
 
-   # Normal colors
-  bright:
-    black:   '#666666'
-    red:     '#ff3334'
-    green:   '#5fd7af'
-    yellow:  '#e7c547'
-    blue:    '#7aa6da'
-    magenta: '#b77ee0'
-    cyan:    '#54ced6'
-    white:   '#ffffff'
+# Colors 
+  # Normal colors (Blood Moon)
+  normal:
+    black:   '0x10100E'
+    red:     '0xC40233'
+    green:   '0x009F6B'
+    yellow:  '0xFFD700'
+    blue:    '0x0087BD'
+    magenta: '0x9A4EAE'
+    cyan:    '0x20B2AA'
+    white:   '0xC6C6C4'
 
-   # Bright colors
+  # Bright colors
   bright:
      black:   '#4C566A'
      red:     '#BF616A'
@@ -168,34 +167,6 @@ colors:
      magenta: '#B48EAD'
      cyan:    '#8FBCBB'
      white:   '#ECEFF4'
-   # Default colors
-   #primary:
-     #background: '#2E3440'
-     #foreground: '#D8DEE9'
-
-
-      #background: '0x181020'
-
-   # Normal colors
-
-
-
-   # Bright colors
-
-
-
-# Colors (Tomorrow Night Bright)
-#colors:
-  # Default colors
-
-
-    # Bright and dim foreground colors
-    #
-    # The dimmed foreground color is calculated automatically if it is not present.
-    # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
-    # is `false`, the normal foreground color will be used.
-    #dim_foreground: '0x9a9a9a'
-    #bright_foreground: '0xffffff'
 
   # Cursor colors
   #
@@ -222,8 +193,8 @@ colors:
   # Example:
   #   `- { index: 16, color: '0xff00ff' }`
   #
-#  indexed_colors: []
-
+  indexed_colors: []
+#
 # Visual Bell
 #
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
