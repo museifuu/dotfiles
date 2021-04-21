@@ -2,7 +2,13 @@ syntax on
 set number
 set relativenumber
 set autoindent
-set clipboard=unnamedplus
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set encoding=utf-8
+set fileencoding=utf8
+set background=dark
+call plug#begin()
+Plug 'drewtempelmeyer/palenight.vim'
+call plug#end()
+colorscheme palenight
