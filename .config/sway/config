@@ -1,21 +1,39 @@
-# i3 config file (v4)
-#
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+exec ~/utils/blocks/cpu_usage
+exec ~/utils/blocks/top_process.sh
+exec pipewire & pipewire-pulse & pipewire-media-session
+exec udiskie
+exec dunst -config ~/.config/dunst/dunstrc
 
-# toggle split direction for each window
-default_orientation horizontal
+input * { 
+    xkb_layout br
+    xkb_numlock enabled
+    accel_profile flat
+}
+
+default_orientation auto
 default_border pixel
 
+output HDMI-A-1 {
+    mode 1920x1080@75Hz
+    adaptive_sync on
+}
+
+output DP-1 disable
+
+output * {
+    background ~/pics/wallpaper fill
+}
+
+seat seat0 xcursor_theme "Hackneyed-Dark"
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
 set $mod Mod4
-set $bar_height 14
-
-
 
 floating_modifier $mod
 
 bindsym $mod+Return exec alacritty
-bindsym $mod+Shift+q kill; split toggle
-bindsym $mod+d exec dmenu_run
+bindsym $mod+Shift+q kill
+bindsym $mod+d exec bemenu-run
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -27,10 +45,8 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle
 
-bindsym $mod+q layout stacking
-bindsym $mod+w layout tabbed
 bindsym $mod+e split toggle
 bindsym $mod+h split horizontal
 bindsym $mod+v split vertical
@@ -86,11 +102,15 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 bindsym $mod+r mode "resize"
 
 ### Take screenshot
-bindsym $mod+Shift+p exec grim /home/user/screenshots/$(date +'%Y-%m-%d-%T-screenshot.png')
+bindsym $mod+Shift+p exec grim ~/screenshots/$(date +'%Y-%m-%d-%T-screenshot.png')
+
+bindsym $mod+minus exec pactl set-sink-volume 0 -5%
+bindsym $mod+equal exec pactl set-sink-volume 0 +5%
+bindsym $mod+Shift+t output DP-1 toggle
 
 # Disable window titlebars entirely
-for_window [class="^.*"] border pixel 1
-for_window [class="^."] split toggle
+#for_window [class="^.*"] border pixel 1
+#for_window [class="^.*"] split toggle
 
 smart_borders on
 smart_gaps on
@@ -98,31 +118,8 @@ smart_gaps on
 gaps inner 0
 gaps outer 0
 
-#exec --no-startup-id polybar -r bar &
-#exec --no-startup-id feh --bg-scale /home/user/Images/arch-10.png &
-#exec --no-startup-id compton --config /home/user/.config/compton.conf &
-#exec --no-startup-id xcompmgr -cCfn -I0.06 -O0.07
-#exec dex --autostart &
-#exec steam -silent &
-
-input 1:1:AT_Translated_Set_2_keyboard {
-    xkb_layout br
-}
-
 bar {
-
     swaybar_command waybar
-
-#    position top
-#    tray_output none
-#    workspace_buttons no
-#    height 12
-#    colors {
-#        background #00000000
-#    }
-
-
-
 }
 
 mode "resize"
@@ -136,8 +133,3 @@ mode "resize"
     bindsym Escape mode "default"
     bindsym $mod+r mode "default"
 }
-
-floating_minimum_size 50 x 50
-floating_maximum_size 1366 x 751
-
-for_window [class="Alacritty"] floating enable; resize set 486 px 270 px

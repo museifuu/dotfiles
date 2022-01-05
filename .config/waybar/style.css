@@ -1,0 +1,38 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "terminusmodx12r.ttf";
+    font-size: 12px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(11, 11, 11, 0.8);
+    color: #ffffff;
+}
+
+#workspaces button {
+    padding: 0 1px 0 1px;
+    color: #ffffff;
+}
+
+#workspaces button:hover {
+    background: inherit;
+}
+
+#workspaces button.focused {
+    background-color: #005577; 
+}
+
+#tray{
+    padding-left: 5px;
+}
+
+#custom-separator {
+    color: #808080;
+}
+
+#window {
+    background-color: #005577; 
+    padding: 0 8px;
+}
