@@ -1,19 +1,21 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "terminusmodx12r.ttf";
-    font-size: 12px;
-    min-height: 0;
+    font-family: "spleen-8x16.ttf";
+    font-size: 16px;
+    min-height: 12px;
 }
 
 window#waybar {
-    background-color: rgba(11, 11, 11, 0.8);
+    background-color: #005577; 
     color: #ffffff;
 }
 
 #workspaces button {
-    padding: 0 1px 0 1px;
+    padding: 3px 0 0 0;
+    background-color: #0b0b0b;
     color: #ffffff;
+    min-width: 24px;
 }
 
 #workspaces button:hover {
@@ -29,10 +31,29 @@ window#waybar {
 }
 
 #custom-separator {
+    background-color: #0b0b0b;
     color: #808080;
 }
 
-#window {
-    background-color: #005577; 
-    padding: 0 8px;
+#custom-marisa {
+    font-family: "Custom Marisa";
+    color: #ccc;
+    font-size: 24px;
 }
+
+#window {
+    padding: 0 10px;
+}
+
+#custom-network,
+#custom-marisa,
+#custom-cpu_load,
+#custom-cpu_temp,
+#custom-top_process,
+#custom-memory,
+#clock,
+#tray
+{
+    background-color: #0b0b0b;
+}
+

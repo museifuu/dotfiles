@@ -1,11 +1,13 @@
-{
-    "layer": "bottom", // Waybar at top layer
-    "height": 17, // Waybar height (to be removed for auto height)
+[{
+    "layer": "bottom",
+    "output": "!DP-1",
 
     "modules-left": ["sway/workspaces", "custom/separator", "sway/mode", "sway/window"],
-    "modules-center": ["network"],
+    "modules-center": [],
     "modules-right":
     [
+        "custom/network",
+        "custom/marisa",
         "custom/cpu_load",
         "custom/separator",
         "custom/cpu_temp",
@@ -21,24 +23,25 @@
     "sway/mode": {
         "format": "<span style=\"italic\" color=\"#00ff00\">[{}] </span>"
     },
-    "network": {
-        "format-wifi": "<span color=\"#3EC13F\" font=\"Dejavu Sans Mono 10\">▾</span> {bandwidthDownOctets:9} <span color=\"#808080\">|</span> <span color=\"#FE522C\" font=\"Dejavu Sans Mono 10\">▴</span> {bandwidthUpOctets:8}  ",
-        "format-disconnected": "<span color=\"#ff0000\">Disconnected</span>",
-        "interval": 1
+    "custom/network": {
+        "exec": "~/utils/blocks/network.sh"
     },
     "custom/cpu_load": {
-        "exec": "id=$(pidof waybar); while [ $id -eq $(pidof waybar) ]; do cat /tmp/cpu; sleep 1; done;",
-        "format": "<span color=\"#ff00ff\">CPU:</span> {}"
+        "exec": "cat /tmp/cpu",
+        "format": "<span color=\"#ff00ff\">CPU:</span> {}",
+        "interval": 1
     },
     "custom/top_process": {
-        "exec": "id=$(pidof waybar); while [ $id -eq $(pidof waybar) ]; do cat /tmp/top_process; sleep 1; done;"
+        "exec": "cat /tmp/top_process",
+        "interval": 2
     },
     "custom/cpu_temp": {
-        "exec": "id=$(pidof waybar); while [ $id -eq $(pidof waybar) ]; do ~/utils/cpu_temperature.sh; sleep 1; done"
+        "exec": "~/utils/cpu_temperature.sh",
+        "interval": 1
     },
     "custom/memory": {
-        "exec": "id=$(pidof waybar); while [ $id -eq $(pidof waybar) ]; do ~/utils/memory.sh; sleep 2; done",
-        "format": "RAM: {}"
+        "exec": "~/utils/memory.sh",
+        "interval": 2
     },
     "clock": {
         "format": "{:%Y-%m-%d %H:%M:%S}",
@@ -47,7 +50,18 @@
     "tray": {
         "spacing": 0
     },
+    "custom/marisa": {
+        "exec": "~/utils/blocks/marisa"
+    },
     "custom/separator": {
         "format": " | "
     }
-}
+},
+{
+    "layer": "bottom",
+    "output": "DP-1",
+    "modules-left": ["sway/workspaces", "custom/separator", "sway/mode", "sway/window"],
+    "custom/separator": {
+        "format": " | "
+    }
+}]
