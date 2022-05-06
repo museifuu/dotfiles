@@ -8,6 +8,8 @@
     [
         "custom/network",
         "custom/marisa",
+        "custom/btc-brl",
+        "custom/separator",
         "custom/cpu_load",
         "custom/separator",
         "custom/cpu_temp",
@@ -52,6 +54,11 @@
     },
     "custom/marisa": {
         "exec": "~/utils/blocks/marisa"
+    },
+    "custom/btc-brl": {
+        "format": "<span color=\"#f2a900\">₿</span> {}",
+        "exec": "LANG=C printf '%.2f' $(curl -s 'brl.rate.sx/1btc')",
+        "interval": 1800
     },
     "custom/separator": {
         "format": " | "
