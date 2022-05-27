@@ -1,6 +1,6 @@
 exec ~/utils/blocks/cpu_usage
-exec ~/utils/blocks/top_process.sh
-exec pipewire & pipewire-pulse & pipewire-media-session
+exec pipewire & pipewire-pulse
+exec pidof wireplumber || wireplumber
 exec udiskie
 exec dunst -config ~/.config/dunst/dunstrc
 

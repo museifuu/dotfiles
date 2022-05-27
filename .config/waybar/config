@@ -34,8 +34,7 @@
         "interval": 1
     },
     "custom/top_process": {
-        "exec": "cat /tmp/top_process",
-        "interval": 2
+        "exec": "~/utils/blocks/top_process",
     },
     "custom/cpu_temp": {
         "exec": "~/utils/cpu_temperature.sh",

@@ -33,3 +33,5 @@ bindkey "^[[6~" down-line-or-history
 PS1="%(!.%B%F{red}.%B%F{green}%n@)%m %F{blue}%(!.%1~.%~) %(!.#.$) %b%f"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export _JAVA_AWT_WM_NONREPARENTING=1
+
+alias df="df -h"
