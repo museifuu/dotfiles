@@ -29,9 +29,8 @@
         "exec": "~/utils/blocks/network.sh"
     },
     "custom/cpu_load": {
-        "exec": "cat /tmp/cpu",
-        "format": "<span color=\"#ff00ff\">CPU:</span> {}",
-        "interval": 1
+        "exec": "~/utils/blocks/cpu_usage",
+        "format": "<span color=\"#ff00ff\">CPU: </span>{}"
     },
     "custom/top_process": {
         "exec": "~/utils/blocks/top_process",

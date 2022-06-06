@@ -71,8 +71,12 @@ int main(int argc, char **argv)
 
         if(stat == NULL)
             printf("Could not open /proc/stat");
-
-        FILE *out = fopen("/tmp/cpu", "w+");
+        FILE *out;
+#if defined(DWM_STATUS)
+        out = fopen("/tmp/cpu", "w+");
+#elif defined(WAYBAR_STATUS)
+        out = fopen("/dev/stdout", "w");
+#endif
         for(int i = 0; i <= thread_count; i++)
         {
             getline(&line, &size, stat);
