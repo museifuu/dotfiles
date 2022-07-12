@@ -26,21 +26,21 @@
         "format": "<span style=\"italic\" color=\"#00ff00\">[{}] </span>"
     },
     "custom/network": {
-        "exec": "~/utils/blocks/network.sh"
+        "exec": "~/.local/bin/network"
     },
     "custom/cpu_load": {
-        "exec": "~/utils/blocks/cpu_usage",
+        "exec": "~/.local/bin/cpu_usage",
         "format": "<span color=\"#ff00ff\">CPU: </span>{}"
     },
     "custom/top_process": {
-        "exec": "~/utils/blocks/top_process",
+        "exec": "~/.local/bin/top_process",
     },
     "custom/cpu_temp": {
-        "exec": "~/utils/cpu_temperature.sh",
+        "exec": "~/.local/bin/cpu_temp",
         "interval": 1
     },
     "custom/memory": {
-        "exec": "~/utils/memory.sh",
+        "exec": "~/.local/bin/memory",
         "interval": 2
     },
     "clock": {
@@ -51,7 +51,7 @@
         "spacing": 0
     },
     "custom/marisa": {
-        "exec": "~/utils/blocks/marisa"
+        "exec": "~/.local/bin/marisa"
     },
     "custom/btc-brl": {
         "format": "<span color=\"#f2a900\">₿</span> {}",
