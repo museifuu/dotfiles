@@ -1,18 +1,21 @@
 * {
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
     border: none;
     border-radius: 0;
-    font-family: "spleen-8x16.ttf";
-    font-size: 16px;
     min-height: 12px;
 }
 
 window#waybar {
+    font-family: "spleen-8x16.ttf";
+    font-size: 16px;
     background-color: #005577; 
     color: #ffffff;
 }
 
 #workspaces button {
-    padding: 3px 0 0 0;
+    padding: 3px 1px 0 1px;
     background-color: #0b0b0b;
     color: #ffffff;
     min-width: 24px;
@@ -33,12 +36,13 @@ window#waybar {
 #custom-separator {
     background-color: #0b0b0b;
     color: #808080;
+    padding: 4px;
 }
 
 #custom-marisa {
     font-family: "Custom Marisa";
     color: #ccc;
-    font-size: 24px;
+    font-size: 26px;
 }
 
 #window {
@@ -55,6 +59,7 @@ window#waybar {
 #clock,
 #tray
 {
+    color: #ffffff;
     background-color: #0b0b0b;
 }
 

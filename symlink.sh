@@ -1,8 +1,15 @@
 #!/bin/sh
 
-ln -siv $PWD/.local/bin/* -t ~/.local/bin
-ln -siv $PWD/.local/src/status -t ~/.local/src
-ln -siv $PWD/.local/src/dwmblocks/blocks.h ~/.local/src/dwmblocks/blocks.h
-ln -siv $PWD/.config/* -t ~/.config
-ln -siv $PWD/.vimrc ~/.vimrc
-ln -siv $PWD/.zshrc ~/.zshrc
+mkdir -p "$HOME/.local/bin"
+mkdir -p "$HOME/.local/src"
+mkdir -p "$HOME/.local/share/fonts"
+
+BASEDIR=$(dirname "$(readlink -f "$BASH_SOURCE")")
+
+ln -siv "$BASEDIR"/.local/bin/*                     -t  "$HOME/.local/bin"
+ln -siv "$BASEDIR"/.local/src/status                -t  "$HOME/.local/src"
+ln -siv "$BASEDIR"/.local/share/fonts/*             -t  "$HOME/.local/share/fonts"
+ln -siv "$BASEDIR"/.local/src/dwmblocks/blocks.h        "$HOME/.local/src/dwmblocks/blocks.h"
+ln -siv "$BASEDIR"/.config/*                        -t  "$HOME/.config"
+ln -siv "$BASEDIR"/.vimrc                               "$HOME/.vimrc"
+ln -siv "$BASEDIR"/.zshrc                               "$HOME/.zshrc"

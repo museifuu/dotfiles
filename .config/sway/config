@@ -1,6 +1,4 @@
-exec ~/utils/blocks/cpu_usage
-exec pipewire & pipewire-pulse
-exec pidof wireplumber || wireplumber
+exec runsvdir ~/.runit/runsvdir
 exec udiskie
 exec dunst -config ~/.config/dunst/dunstrc
 
@@ -21,7 +19,7 @@ output HDMI-A-1 {
 
 output DP-1 {
     disable
-    pos 0 330
+    pos 0 0
 }
 
 output * {
