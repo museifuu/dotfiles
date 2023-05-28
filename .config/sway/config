@@ -1,6 +1,7 @@
-exec runsvdir ~/.runit/runsvdir
+exec pipewire
+exec pipewire-pulse
+exec wireplumber
 exec udiskie
-exec dunst -config ~/.config/dunst/dunstrc
 
 input * { 
     xkb_layout br
@@ -13,14 +14,14 @@ default_border pixel
 
 output HDMI-A-1 {
     mode 1920x1080@60Hz
-    adaptive_sync on
-    pos 1366 0
-}
-
-output DP-1 {
-    disable
+    adaptive_sync off
     pos 0 0
 }
+
+# output DP-1 {
+#    disable
+#    pos 0 0
+#}
 
 output * {
     background ~/pics/wallpaper fill
@@ -29,7 +30,13 @@ output * {
 seat seat0 xcursor_theme "Hackneyed-Dark"
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
+exec swayidle -w \
+    timeout 900 'swaymsg "output * power off"' \
+    resume 'swaymsg "output * power on"'
+
 set $mod Mod4
+
+for_window [class="Steam"] floating enable
 
 floating_modifier $mod
 

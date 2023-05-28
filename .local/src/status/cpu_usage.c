@@ -131,8 +131,9 @@ int main(int argc, char **argv)
 #if defined(DWM_STATUS)
                 fprintf(out, "^c#%s^^r0,%d,%d,%d^^f%d^", hex_color, bar_height - gauge_height, gauge_width, bar_height, gauge_width + gauge_spacement);
 #elif defined(WAYBAR_STATUS)
-                char *gauges[8] = { "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" };
-                fprintf(out, " <span color=\"#%s\">%s</span>", hex_color, gauges[(int)(usage*7)]);
+                char *gauges[9] = { "▁", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" };
+                int usage_level = (int)(usage*8);
+                fprintf(out, "<span fgcolor=\"#%s\" fgalpha=\"%d\" letter_spacing=\"2048\">%s</span>", hex_color, usage_level == 0 ? 1 : 0xffff, gauges[usage_level]);
 #endif
             }
             lastTotal[i] = total;

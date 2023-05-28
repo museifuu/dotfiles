@@ -7,12 +7,12 @@
     "modules-right":
     [
         "custom/network",
-        "custom/marisa",
+        "image#marisa",
         "custom/btc-brl",
         "custom/separator",
         "custom/cpu_load",
         "custom/separator",
-        "custom/cpu_temp",
+        "temperature",
         "custom/separator",
         "custom/top_process",
         "custom/separator",
@@ -39,6 +39,10 @@
         "exec": "~/.local/bin/cpu_temp",
         "interval": 1
     },
+    "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+        "interval": 1
+    },
     "custom/memory": {
         "exec": "~/.local/bin/memory",
         "interval": 2
@@ -50,8 +54,10 @@
     "tray": {
         "spacing": 0
     },
-    "custom/marisa": {
-        "exec": "~/.local/bin/marisa"
+    "image#marisa": {
+        "path": "/home/kauan/.local/share/status/marisa.png",
+        "size": 32,
+        "signal": 7,
     },
     "custom/btc-brl": {
         "format": "<span color=\"#f2a900\">₿</span> {}",
@@ -60,7 +66,7 @@
     },
     "custom/separator": {
         "format": " | "
-    }
+    },
 },
 {
     "layer": "bottom",

@@ -38,10 +38,42 @@ window#waybar {
     color: #808080;
 }
 
-#custom-marisa {
-    font-family: "Custom Marisa";
-    color: #ccc;
-    font-size: 26px;
+#image {
+    background-color: #0b0b0b;
+}
+
+@keyframes move {
+    from {
+        padding-left: 0px;
+        padding-right: 300px;
+    }
+    40% {
+        padding-left: 300px;
+        padding-right: 0px;
+        opacity: 1;
+    }
+    42% {
+        padding-left: 300px;
+        padding-right: 0px;
+        opacity: 0;
+    }
+    98% {
+        padding-left: 0px;
+        padding-right: 300px;
+        opacity: 0;
+    }
+    to {
+        padding-left: 0px;
+        padding-right: 300px;
+        opacity: 1;
+    }
+}
+
+#image.marisa image {
+    animation-name: move;
+    animation-duration: 20s;
+    animation-timing-function: steps(66);
+    animation-iteration-count: infinite;
 }
 
 #window {
@@ -50,9 +82,12 @@ window#waybar {
 
 #custom-network,
 #custom-marisa,
+#custom-before_marisa,
+#custom-after_marisa,
 #custom-btc-brl,
 #custom-cpu_load,
 #custom-cpu_temp,
+#temperature,
 #custom-top_process,
 #custom-memory,
 #clock,
