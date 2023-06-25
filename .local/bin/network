@@ -13,10 +13,13 @@ elif [ $status == waybar ]; then
     output="/dev/stdout"
 fi
 declare lastTotal=(0 0)
+IFS=$'\n'
 while true; do
-    declare wltotal=($(grep -e "wl" /proc/net/dev | awk '{printf "%d %d", $2/1024, $10/1024}'))
-    declare ethtotal=($(grep -e "en" -e "eth" /proc/net/dev | awk '{printf "%d %d", $2/1024, $10/1024}'))
-    declare total=($((${wltotal[0]}+${ethtotal[0]})) $((${wltotal[1]}+${ethtotal[1]})))
+    declare total=(0 0)
+    for line in $(grep -e "wl" -e "en" -e "eth" /proc/net/dev | awk '{printf "%d %d\n", $2/1024, $10/1024}'); do
+        data=(${line/ /$'\n'})
+        declare total=($((${total[0]}+${data[0]})) $((${total[1]}+${data[1]})))
+    done
     printf "$prefix_down %4dkB | $prefix_up %4dkB\n" $((${total[0]}-${lastTotal[0]})) $((${total[1]}-${lastTotal[1]})) > $output
     lastTotal=(${total[@]})
     sleep 1
